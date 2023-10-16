@@ -28,4 +28,12 @@ class WikiValidationTest extends TestCase
         $response->assertStatus(422);
         $response->assertJsonValidationErrors('content');
     }
+
+    public function test_it_must_have_search_in_wiki_search()
+    {
+        $response = $this->getJson('/api/v1/wiki');
+
+        $response->assertStatus(422);
+        $response->assertJsonValidationErrors('search');
+    }
 }
