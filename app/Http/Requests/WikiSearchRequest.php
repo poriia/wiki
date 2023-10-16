@@ -4,7 +4,7 @@ namespace App\Http\Requests;
 
 use Illuminate\Foundation\Http\FormRequest;
 
-class WikiStoreRequest extends FormRequest
+class WikiSearchRequest extends FormRequest
 {
     public function authorize(): bool
     {
@@ -14,9 +14,7 @@ class WikiStoreRequest extends FormRequest
     public function rules(): array
     {
         return [
-            'title' => 'required|string|min:5',
-            'content' => 'required|string|min:5',
-            'image' => 'sometimes|image|mimes:jpeg,png,jpg,gif,svg|max:2048',
+            'search' => 'required|string|min:3',
         ];
     }
 }
