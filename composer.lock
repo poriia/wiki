@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "aa322c53454393ed775cfe4807d54a50",
+    "content-hash": "ab7fd00b29f3ec66f2b926201b54c141",
     "packages": [
         {
             "name": "brick/math",
@@ -1815,6 +1815,43 @@
                 }
             ],
             "time": "2023-08-05T12:09:49+00:00"
+        },
+        {
+            "name": "mojtabarks/api-response",
+            "version": "v2.1.0",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/mojtabaRKS/api-response.git",
+                "reference": "34e7a044086e6ad8447774322d0024af15fefa11"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/mojtabaRKS/api-response/zipball/34e7a044086e6ad8447774322d0024af15fefa11",
+                "reference": "34e7a044086e6ad8447774322d0024af15fefa11",
+                "shasum": ""
+            },
+            "type": "library",
+            "autoload": {
+                "psr-4": {
+                    "Mojtabarks\\ApiResponse\\": "src"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "Mojtaba Rakhisi",
+                    "email": "mojtaba.rakhisi@gmail.com"
+                }
+            ],
+            "description": "A lighweight package to create appropriate response",
+            "support": {
+                "issues": "https://github.com/mojtabaRKS/api-response/issues",
+                "source": "https://github.com/mojtabaRKS/api-response/tree/v2.1.0"
+            },
+            "time": "2021-07-13T18:40:30+00:00"
         },
         {
             "name": "monolog/monolog",
@@ -8075,5 +8112,5 @@
         "php": "^8.1"
     },
     "platform-dev": [],
-    "plugin-api-version": "2.3.0"
+    "plugin-api-version": "2.6.0"
 }
