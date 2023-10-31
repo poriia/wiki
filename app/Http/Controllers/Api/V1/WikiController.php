@@ -33,4 +33,39 @@ class WikiController extends BaseApiController
 
         return ApiResponse::successResponse()->setMessage('Wiki was found')->setResponseValue($wiki)->render();
     }
+
+    public function findById(Wiki $id)
+    {
+        $wiki = Wiki::find($id)->first();
+        if (! $wiki) {
+            return ApiResponse::failureResponse()->setMessage('Wiki not found')->render();
+        }
+
+        $relatedWikis = $this->findRelatedWikis($wiki->content);
+        $wiki = [
+            'id' => $wiki->id,
+            'title' => $wiki->title,
+            'content' => $wiki->content,
+            'related' => $relatedWikis,
+        ];
+
+        return ApiResponse::successResponse()->setMessage('Wiki was found')->setResponseValue($wiki)->render();
+    }
+
+    private function findRelatedWikis($content)
+    {
+        $keywords = explode(' ', $content);
+        $relatedWikis = [];
+
+        foreach ($keywords as $key => $keyword) {
+            $wikis = Wiki::where('content', 'like', '%'.$keyword.'%')->get();
+            foreach ($wikis as $wiki) {
+                if (! isset($relatedWikis[$key])) {
+                    $relatedWikis[$key] = $wiki->id;
+                }
+            }
+        }
+        
+        return $relatedWikis;
+    }
 }
