@@ -48,4 +48,30 @@ class WikiApiTest extends TestCase
             ],
         ]);
     }
+    public function test_it_can_find_related_wikis()
+    {
+        $wiki = Wiki::factory()->create([
+            'title' => 'Test Title',
+            'content' => 'Test Content',
+        ]);
+
+        $response = $this->getJson('/api/v1/wiki/' . $wiki->id);
+
+        $response->assertStatus(200);
+        $response->assertJson([
+            'success' => true,
+            'code' => 200,
+            'message' => 'Wiki was found',
+            'data' => [
+                'id' => $wiki->id,
+                'title' => 'Test Title',
+                'content' => 'Test Content',
+                'related' => [
+                    0 => $wiki->id,
+                    1 => $wiki->id,
+                ],
+            ],
+        ]);
+    }
+
 }
